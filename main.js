@@ -62,11 +62,10 @@ function toggleComplete(id){
 
 function deleteTask(id){
     for(let i=0; i<taskList.length;i++){
-        // if(taskList[i].id==id){
-        //     taskList.splice(i,1);
-        //     break;
-        // }
-        console.log(taskList[i].id)
+        if(taskList[i].id==id){
+            taskList.splice(i,1);
+            break;
+        }
     }
     render()
 }
