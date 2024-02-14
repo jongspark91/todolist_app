@@ -36,9 +36,49 @@ body{
 .task{
     display: flex;
     justify-content: space-between;
-    padding: 1em
+    float: none;
 }
 
 .task-done{
     text-decoration: line-through;
+    background-color: lightgray;
+    min-width: 80%;
+    border-bottom: 1px solid white;
 }
+
+.task-tab div{
+    cursor: pointer;
+}
+
+/* Style buttons */
+.btn {
+    background-color: white; /* Blue background */
+    border: none; /* Remove borders */
+    color: green; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+  
+  /* Darker background on mouse-over */
+  .btn:hover {
+    background-color: none;
+  }
+
+  /* Style buttons */
+.del-btn {
+    background-color: white;
+    /*background-color: rgb(255, 45, 30); /* Blue background */
+    border: none; /* Remove borders */
+    color: red; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 6px;
+  }
+  
+  /* Darker background on mouse-over */
+  .del-btn:hover {
+    background-color: none;
+    color: rgb(100, 4, 4);
+  }
