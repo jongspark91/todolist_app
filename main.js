@@ -15,13 +15,23 @@ let taskList = []
 let tabs = document.querySelectorAll(".task-tab div")
 let mode = "all"
 let filterList = []
+let underLine = document.getElementById("under-line")
 addButton.addEventListener("click", addTask);
+taskInput.addEventListener("keydown", function (event) {
+    if (event.keyCode === 13) {
+      addTask(event);
+    }
+  });
+taskInput.addEventListener("focus", function(){taskInput.value = ""})
 
 for(let i=1; i<tabs.length; i++){
     tabs[i].addEventListener("click", function(event){filter(event)})
 }
 
 function addTask(){
+    if(taskInput.value == ""){
+        addButton.disabled == true
+    }else{
     let task = {
         id: randomIDGenerate(),
         taskContent: taskInput.value,
@@ -30,14 +40,15 @@ function addTask(){
     taskList.push(task)
     render();
 }
+}
 
 function render(){
     // 1. 내가 선택한 탭에 따라서
-    let list = [];
+    // let list = [];
     if(mode === "all"){
         //tasklist
         list = taskList
-    }else if(mode==="ongoing"){
+    }else if(mode==="ongoing" || mode==="done"){
         //ongoing, done -> filterList
         list = filterList
     }
@@ -81,19 +92,21 @@ function toggleComplete(id){
 }
 
 function deleteTask(id){
-    for(let i=0; i<taskList.length;i++){
-        if(taskList[i].id==id){
-            taskList.splice(i,1)
+    for(let i=0; i<list.length;i++){
+        if(list[i].id==id){
+            list.splice(i,1)
+            taskList = list
             break;
         }
     }
-    console.log(taskList)
+    console.log(list)
     render();
 }
 
 function filter(event){
-    let mode = event.target.id
-    let filterList = []
+    console.log(event.target.id)
+    mode = event.target.id
+    filterList = []
     if(mode === "all"){
         //전체리스트를 보여준다
         render()
@@ -110,6 +123,12 @@ function filter(event){
     }else if(mode ==="done"){
         //끝난 아이템을 보여준다
         //task.isComplete = true
+        for(let i=0; i<taskList.length; i++){
+            if(taskList[i].isComplete ===true){
+                filterList.push(taskList[i])
+            }
+        }
+        render()
     }
 }
 
@@ -118,4 +137,12 @@ function randomIDGenerate() {
     // Convert it to base 36 (numbers + letters), and grab the first 9 characters
     // after the decimal.
     return '_' + Math.random().toString(36).substr(2, 9);
-  }
+}
+
+tabs.forEach(menu=>menu.addEventListener("click", (e)=>underlineIndicator(e)))
+
+function underlineIndicator(e){
+    underLine.style.left = e.currentTarget.offsetLeft + "px";
+    underLine.style.width = e.currentTarget.offsetWidth + "px";
+    underLine.style.top = e.currentTarget.offsetTop + e.currentTarget.offsetHeight-4 + "px";
+}
