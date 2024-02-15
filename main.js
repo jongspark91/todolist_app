@@ -29,9 +29,7 @@ for(let i=1; i<tabs.length; i++){
 }
 
 function addTask(){
-    if(taskInput.value == ""){
-        addButton.disabled == true
-    }else{
+    if(taskInput.value === "") return alert("Input to-do list!");
     let task = {
         id: randomIDGenerate(),
         taskContent: taskInput.value,
@@ -39,7 +37,6 @@ function addTask(){
     }
     taskList.push(task)
     render();
-}
 }
 
 function render(){

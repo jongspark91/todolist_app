@@ -3,17 +3,20 @@ body{
     background-image: url("/images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'ArcadeClassic', sans-serif;
+    color: black;
+    text-shadow: 1px 1px #8b8787;
 }
 
 .container{
-    background-color: white;
+    background-color: rgb(211, 211, 211, 0.5);
     min-height: 100vh;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .task-tab{
     display: flex;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid none;
     position: relative;
 }
 .task-tab div{
@@ -25,12 +28,14 @@ body{
 
 #under-line{
     height: 4px;
-    background-color: pink;
+    background-color: rgb(118, 133, 216);
     position: absolute;
-    width: 80px;
-    left: 0px;
+    width: 45px;
+    left: 0;
     top: 52px;
+    height: 4px;
     padding:0px;
+    transition:0.5s
 }
 
 .task{
